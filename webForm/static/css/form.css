@@ -24,7 +24,7 @@ img{max-width:100%;}
 /*end reset*/
 body{
 	font-family: 'Open Sans', sans-serif;
-	background: url(../images/8.jpg) no-repeat 0px 0px;
+	/* background: url(../images/8.jpg) no-repeat 0px 0px; */
 	background-size:cover;
 
 }
@@ -37,6 +37,7 @@ body{
     color: #fff;
     font-weight: 500;
     font-family: 'Arvo', serif;
+		background-color: #1E90FF
 }
 .contact-w3{
     margin: 4em auto 0;

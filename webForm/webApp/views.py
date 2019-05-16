@@ -1,6 +1,7 @@
 from django.shortcuts import render,  redirect
+from django.contrib import messages
+from .models import UserField
 
-# Create your views here.
 
 def home(request):
     return render(request, 'html/home.html',{})
@@ -9,8 +10,19 @@ def home(request):
 def webform(request):
     return render(request, 'html/form.html', {})
 
-def getDetails(request):
-    pass
+def webform_submit(request):
+    if request.method =='POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        job_title = request.POST['job_title']
+        resume = request.FILES['document']
+
+        user_info = UserField(name = name, email = email, phone = phone,
+                              job_title = job_title, resume = resume)
+        user_info.save()
+        messages.success(request,"Congrats!! Form is successfully saved in DB")
+        return render(request, 'html/form.html', {})
 
 
 def about(request):

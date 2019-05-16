@@ -6,18 +6,21 @@
 <html>
 <head>
 <title>web form</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Temper Contact Form Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<!--web-fonts-->
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<link href="//fonts.googleapis.com/css?family=Arvo:400,400i,700,700i" rel="stylesheet">
-<!--web-fonts-->
-<!-- <img src="{% static "img/back.jpg" %}"> -->
-<link rel="stylesheet" href="{% static 'css/form.css' %}">
+		<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Temper Contact Form Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+		<!--web-fonts-->
+		<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+		<link href="//fonts.googleapis.com/css?family=Arvo:400,400i,700,700i" rel="stylesheet">
 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<!--web-fonts-->
+
+		<link rel="stylesheet" href="{% static 'css/form.css' %}">
 </head>
 
 <body>
@@ -27,36 +30,46 @@
 		</div>
 		<!---header--->
 		<!---main--->
+		{% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissable" role="alert">
+                <button class="close" data-dismiss="alert">
+                    <small><sup>x</sup></small>
+                </button>
+                {{ message }}
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
 			<div class="main-content">
 				<div class="contact-w3">
-					{% csrf_token %}
-					<form action="#" method="post">
+
+					<form action="/webform_submit/" method="post">
+						{% csrf_token %}
 						<label>Name</label>
-						<input type="text" name="Name" placeholder="Your name" required>
+						<input type="text" name="name" placeholder="Your name" required>
 						<div class="row">
 							<div class="contact-left-w3">
 								<label>Email</label>
-									<input type="text" name="Email" placeholder="Email address" required>
+									<input type="text" name="email" placeholder="Email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
 							</div>
 							<div class="contact-right-w3l">
 								<label>Phone</label>
-								<input type="text" name="Phone" placeholder="Phone number" required>
+								<input type="text" name="phone" placeholder="Phone number" required>
 							</div>
 							<div class="clear"></div>
 						</div>
 						<label>Job title</label>
-							<input type="text" name="Job title" placeholder="Job Title" required>
+							<input type="text" name="job_title" placeholder="Job Title" required>
 
-						<!-- <div class="row1">
-							<label>Message</label>
-							<textarea placeholder="Message" name="Message"></textarea>
-						</div> -->
 						<div class="form-group">
     					<label for="exampleFormControlFile1">Resume</label>
-    					<input type="file" class="form-control-file" id="exampleFormControlFile1">
+    					<input type="file" name="document" class="form-control-file" id="exampleFormControlFile1">
   					</div>
 						<input type="submit" value="Submit">
 					</form>
+
 				</div>
 			</div>
 
