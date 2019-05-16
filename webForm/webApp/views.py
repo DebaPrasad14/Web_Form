@@ -12,11 +12,16 @@ def webform(request):
 
 def webform_submit(request):
     if request.method =='POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        phone = request.POST['phone']
-        job_title = request.POST['job_title']
-        resume = request.FILES['document']
+        try:
+            name = request.POST['name']
+            email = request.POST['email']
+            phone = request.POST['phone']
+            job_title = request.POST['job_title']
+            resume = request.POST['document']
+
+        except Exception as e:
+            messages.success(request," Sorry !! Invalid key found !")
+            return render(request, 'html/form.html', {})
 
         user_info = UserField(name = name, email = email, phone = phone,
                               job_title = job_title, resume = resume)
