@@ -10,8 +10,10 @@ def home(request):
 def webform(request):
     return render(request, 'html/form.html', {})
 
+
 def webform_submit(request):
     if request.method =='POST':
+
         try:
             name = request.POST['name']
             email = request.POST['email']
@@ -20,13 +22,13 @@ def webform_submit(request):
             resume = request.POST['document']
 
         except Exception as e:
-            messages.success(request," Sorry !! Invalid key found !")
+            messages.success(request, e)
             return render(request, 'html/form.html', {})
 
         user_info = UserField(name = name, email = email, phone = phone,
-                              job_title = job_title, resume = resume)
+                                                                job_title = job_title, resume = resume)
         user_info.save()
-        messages.success(request,"Congrats!! Form is successfully saved in DB")
+        messages.success(request,"Good Job !! Your Details are successfully saved in DB")
         return render(request, 'html/form.html', {})
 
 
