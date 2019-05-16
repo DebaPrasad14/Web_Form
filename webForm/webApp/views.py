@@ -1,8 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,  redirect
 
 # Create your views here.
+
 def home(request):
-    return render(request, 'html/index.html',{})
+    return render(request, 'html/home.html',{})
+
+
+def webform(request):
+    return render(request, 'html/form.html', {})
+
+def getDetails(request):
+    pass
 
 
 def about(request):

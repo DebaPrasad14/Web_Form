@@ -1,4 +1,7 @@
+{% extends 'html/index.html' %}
 {% load static %}
+
+{% block content %}
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -12,8 +15,8 @@
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link href="//fonts.googleapis.com/css?family=Arvo:400,400i,700,700i" rel="stylesheet">
 <!--web-fonts-->
-<img src="{% static "img/back.jpg" %}">
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<!-- <img src="{% static "img/back.jpg" %}"> -->
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
 
 </head>
 
@@ -26,7 +29,7 @@
 		<!---main--->
 			<div class="main-content">
 				<div class="contact-w3">
-
+					{% csrf_token %}
 					<form action="#" method="post">
 						<label>Name</label>
 						<input type="text" name="Name" placeholder="Your name" required>
@@ -44,10 +47,14 @@
 						<label>Job title</label>
 							<input type="text" name="Job title" placeholder="Job Title" required>
 
-						<div class="row1">
+						<!-- <div class="row1">
 							<label>Message</label>
 							<textarea placeholder="Message" name="Message"></textarea>
-						</div>
+						</div> -->
+						<div class="form-group">
+    					<label for="exampleFormControlFile1">Resume</label>
+    					<input type="file" class="form-control-file" id="exampleFormControlFile1">
+  					</div>
 						<input type="submit" value="Submit">
 					</form>
 				</div>
@@ -56,3 +63,4 @@
 		<!---main--->
 </body>
 </html>
+{% endblock %}
